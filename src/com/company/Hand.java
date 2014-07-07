@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -11,7 +12,7 @@ public class Hand {
     public final String id;
     public final int bet;
     private Actor actor;
-    private List<Card> hand = new LinkedList<Card>();
+    private final List<Card> cards = new LinkedList<Card>();
 
     public Hand(String id, int bet) {
         this.id = id;
@@ -30,7 +31,7 @@ public class Hand {
     public int getScore() {
         int count = 0;
         Queue<Card> aces = new LinkedList<Card>();
-        for(Card card : this.getCards()) {
+        for(Card card : this.cards) {
             count += card.count;
             if (card.count2 != null) {
                 aces.add(card);
@@ -47,23 +48,23 @@ public class Hand {
     }
 
     public Hand addCard(Card card) {
-        this.hand.add(card);
+        this.cards.add(card);
         return this;
     }
 
-    public List<Card> getCards() {
-        return hand;
+    public Iterable<Card> getCards() {
+        return cards;
     }
 
     public Hand clean() {
-        this.hand = new LinkedList<Card>();
+        this.cards.clear();
         return  this;
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(String.format("%s's hand: ", this.actor.name));
+        result.append(String.format("%s's cards: ", this.actor.name));
         for(Card card : this.getCards()) {
             result.append(String.format("%s, ", card));
         }
@@ -71,4 +72,5 @@ public class Hand {
         result.append("\n");
         return result.toString();
     }
+
 }

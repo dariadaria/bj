@@ -123,7 +123,7 @@ public class Blackjack {
         if (this.isDealerOpenHanded) {
             result.append(dealer.hands.get(DEALERS_HAND));
         } else {
-            result.append(String.format("Dealer's hand: %s, *", this.dealer.hands.get(DEALERS_HAND).getCards().get(0)));
+            result.append(String.format("Dealer's hand: %s, *", this.dealer.hands.get(DEALERS_HAND).getCards().iterator().next()));
             result.append("\n");
         }
 

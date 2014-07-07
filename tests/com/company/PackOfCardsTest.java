@@ -1,6 +1,5 @@
 package com.company;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,6 +19,6 @@ public class PackOfCardsTest {
             System.out.println(c);
             i++;
         }
-        Assert.assertEquals(52, i);
+        assertEquals(52, i);
     }
 }

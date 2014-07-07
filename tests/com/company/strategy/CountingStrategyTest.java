@@ -3,7 +3,7 @@ package com.company.strategy;
 import com.company.Card;
 import com.company.PackOfCards;
 import com.company.Hand;
-import junit.framework.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class CountingStrategyTest {
     @Test
     public void test_Burst() {
         Map<Card, Integer> pack = new HashMap<Card, Integer>();
-        for (Card card : PackOfCards.getDeck52()) {
+        for (Card card : PackOfCards.DECK) {
             pack.put(card, 4 * 1);
         }
         Card card = new Card("10", 10);
@@ -30,13 +30,13 @@ public class CountingStrategyTest {
         hand.addCard(new Card("6", 6));
 
         float pSucess = new CountingStrategy().pSucess(hand.getScore(), pack);
-        Assert.assertEquals(0.32, pSucess, 0.1);
+        assertEquals(0.32, pSucess, 0.1);
     }
 
     @Test
     public void test_NoBurst() {
         Map<Card, Integer> pack = new HashMap<Card, Integer>();
-        for (Card card : PackOfCards.getDeck52()) {
+        for (Card card : PackOfCards.DECK) {
             pack.put(card, 4 * 1);
         }
         Card card = new Card("5", 5);
@@ -51,14 +51,14 @@ public class CountingStrategyTest {
         hand.addCard(new Card("8", 8));
 
         float pSucess = new CountingStrategy().pSucess(hand.getScore(), pack);
-        Assert.assertEquals(0.53, pSucess, 0.1);
+        assertEquals(0.53, pSucess, 0.1);
     }
 
     @Test
     public void Test() {
         //Betting box 1: Bot's hand: 2(2), Queen(10), 2(2), total : 14
         Map<Card, Integer> pack = new HashMap<Card, Integer>();
-        for (Card card : PackOfCards.getDeck52()) {
+        for (Card card : PackOfCards.DECK) {
             pack.put(card, 4 * 1);
         }
         Card card = new Card("7", 7);
@@ -95,7 +95,7 @@ public class CountingStrategyTest {
         float pSucess = new CountingStrategy().pSucess(hand.getScore(), pack);
         float pDealer = new CountingStrategy().pSucess(dealer.getScore(), pack);
         System.out.println(pSucess * (1 - pDealer));
-        Assert.assertEquals(0.63, pSucess, 0.1);
-        Assert.assertEquals(0.46, pDealer, 0.1);
+        assertEquals(0.63, pSucess, 0.1);
+        assertEquals(0.46, pDealer, 0.1);
     }
 }

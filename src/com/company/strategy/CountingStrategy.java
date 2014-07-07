@@ -17,12 +17,12 @@ public class CountingStrategy implements IStrategy {
     @Override
     public Action play(Hand hand, Blackjack blackjack) {
         Map<Card, Integer> pack = new HashMap<Card, Integer>();
-        for (Card card : PackOfCards.getDeck52()) {
+        for (Card card : PackOfCards.DECK) {
             pack.put(card, 4 * blackjack.NUM_OF_DECKS);
         }
         for (Actor player : blackjack.actors) {
-            for (Hand h: player.hands.values()) {
-                for (Card card : h.getCards()) {
+            for (Hand playersHand: player.hands.values()) {
+                for (Card card : playersHand.getCards()) {
                     pack.put(card, pack.get(card) - 1);
                 }
             }

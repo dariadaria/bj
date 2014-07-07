@@ -2,20 +2,21 @@ package com.company;
 
 /**
  * Created by Daria on 2014-07-05.
+ * In this game we don't care about card's suit.
  */
 public class Card {
     public final String face;
     public final int count;
-    public Integer count2;
+    public final Integer count2;
 
-    public Card(String face, int count, int count2) {
-        this(face, count);
+    public Card(String face, int count, Integer count2) {
+        this.face = face;
+        this.count = count;
         this.count2 = count2;
     }
 
     public Card(String face, int count) {
-        this.face = face;
-        this.count = count;
+        this(face, count, null);
     }
 
     @Override

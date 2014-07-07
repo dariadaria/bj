@@ -10,8 +10,8 @@ import java.util.Queue;
  */
 public class PackOfCards {
     private static final int DECK_SIZE = 52;
-    private static final Card[] DECK = getDeck52();
-    private Queue<Card> cards  = new LinkedList<Card>();
+    public static final Card[] DECK = getDeck52();
+    private final Queue<Card> cards  = new LinkedList<Card>();
 
     public PackOfCards() {
         this(1);
@@ -23,7 +23,7 @@ public class PackOfCards {
         }
 
         for (int i = 0; i < numberOfDecks; i++) {
-            for(Card card : DECK) {
+            for(Card card : DECK) { //Every card in a deck gets added to the list as every card has 4 suits
                 this.cards.add(card);
                 this.cards.add(card);
                 this.cards.add(card);
@@ -45,7 +45,7 @@ public class PackOfCards {
         return this.cards.poll();
     }
 
-    public static Card[] getDeck52() {
+    private static Card[] getDeck52() {
         Card[] cards = new Card[13];
         cards[0] = new Card("2", 2);
         cards[1] = new Card("3", 3);
